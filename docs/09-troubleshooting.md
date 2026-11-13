@@ -112,7 +112,7 @@ sudo apt install -y cmake build-essential python3-dev pkg-config libevdev-dev \
 
 ### Command not found
 
-The environment is not active. Run `source ~/so101/env.sh` in every new terminal.
+The environment is not active. Run `source ~/so101-guide/env.sh` in every new terminal.
 
 ## Where to ask
 

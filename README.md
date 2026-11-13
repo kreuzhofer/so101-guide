@@ -25,6 +25,8 @@ mkdocs serve
 | `docs/assets/` | Stylesheet, script and images |
 | `theme/main.html` | Page template |
 | `mkdocs.yml` | Chapter order and Markdown extensions |
+| `env.sh` | Settings file used by the guide's commands: activates `.venv` and sets ports and arm IDs |
+| `follow-me.sh` | Starts the follow-me demo |
 | `tools/make_artifact_page.py` | Prepares the entry page for publishing as a claude.ai Artifact |
 
 The two arm images in `docs/assets/` come from [TheRobotStudio/SO-ARM100](https://github.com/TheRobotStudio/SO-ARM100) (Apache-2.0).

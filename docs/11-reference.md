@@ -3,7 +3,7 @@
 Every command of this guide on one page. All of them assume that the environment is loaded:
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 ```
 
 ## Settings
@@ -63,13 +63,13 @@ lerobot-calibrate --teleop.type=so101_leader --teleop.port=$LEADER_PORT --teleop
 
 ```bash
 # Back up the calibration files
-cp -r ~/.cache/huggingface/lerobot/calibration/* ~/so101/calibration-backup/
+cp -r ~/.cache/huggingface/lerobot/calibration/* ~/so101-guide/calibration-backup/
 ```
 
 ## Follow-me
 
 ```bash
-~/so101/follow-me.sh
+~/so101-guide/follow-me.sh
 ```
 
 ```bash
@@ -96,10 +96,12 @@ lerobot-find-cameras opencv
 
 | Path | Content |
 | --- | --- |
-| `~/so101/.venv/` | Python environment with LeRobot 0.7.0 |
-| `~/so101/env.sh` | Activates the environment and sets the four variables |
-| `~/so101/follow-me.sh` | Demo script |
-| `~/so101/calibration-backup/` | Copy of the calibration files |
+| `~/so101-guide/` | Clone of this guide's repository |
+| `~/so101-guide/.venv/` | Python environment with LeRobot 0.7.0, not tracked by git |
+| `~/so101-guide/env.sh` | Activates the environment and sets the four variables |
+| `~/so101-guide/env.local.sh` | Optional local overrides, not tracked by git |
+| `~/so101-guide/follow-me.sh` | Demo script |
+| `~/so101-guide/calibration-backup/` | Copy of the calibration files, not tracked by git |
 | `/etc/udev/rules.d/99-so101.rules` | Fixed device names |
 | `~/.cache/huggingface/lerobot/calibration/` | Calibration files used by LeRobot |
 

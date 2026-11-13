@@ -26,7 +26,7 @@ It does not need to be exact to the degree, but it should be the same pose on bo
 ## Follower
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-calibrate \
     --robot.type=so101_follower \
     --robot.port=$FOLLOWER_PORT \
@@ -82,8 +82,8 @@ The file name is the ID from `env.sh`. If you later use a different ID, LeRobot 
 Back up both files:
 
 ```bash
-mkdir -p ~/so101/calibration-backup
-cp -r ~/.cache/huggingface/lerobot/calibration/* ~/so101/calibration-backup/
+mkdir -p ~/so101-guide/calibration-backup
+cp -r ~/.cache/huggingface/lerobot/calibration/* ~/so101-guide/calibration-backup/
 ```
 
 ## Calibrating again

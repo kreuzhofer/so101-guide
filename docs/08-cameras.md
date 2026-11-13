@@ -18,7 +18,7 @@ Plug the cameras directly into the Spark or into a powered USB hub. Two cameras 
 ## Find the cameras
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-find-cameras opencv
 ```
 

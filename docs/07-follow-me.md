@@ -17,7 +17,7 @@ Run teleoperation: you move the leader, the follower copies it. Then wrap the co
 For the very first test, limit how far the follower may move per control step. It then approaches the leader's pose gradually and lags behind fast movements.
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-teleoperate \
     --robot.type=so101_follower \
     --robot.port=$FOLLOWER_PORT \
@@ -76,41 +76,15 @@ A rate near 60 Hz means the loop keeps up. A much lower rate points to a USB or 
 
 ## Demo script
 
-Create a script that starts the demo with one word:
+The repository contains `follow-me.sh`, which starts the demo with one command:
 
 ```bash
-cat > ~/so101/follow-me.sh <<'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-source ~/so101/env.sh
-
-for port in "$FOLLOWER_PORT" "$LEADER_PORT"; do
-  if [ ! -e "$port" ]; then
-    echo "Not connected: $port. Check USB cables." >&2
-    exit 1
-  fi
-done
-
-echo "Follow-me starts. Park the follower before pressing Ctrl+C."
-exec lerobot-teleoperate \
-    --robot.type=so101_follower \
-    --robot.port="$FOLLOWER_PORT" \
-    --robot.id="$FOLLOWER_ID" \
-    --teleop.type=so101_leader \
-    --teleop.port="$LEADER_PORT" \
-    --teleop.id="$LEADER_ID" \
-    "$@"
-EOF
-chmod +x ~/so101/follow-me.sh
+~/so101-guide/follow-me.sh
 ```
 
-Start it with:
+It loads `env.sh`, checks that both arms are plugged in, and then runs the teleoperation command from above. If a board is missing it stops with `Not connected: …` and does not start.
 
-```bash
-~/so101/follow-me.sh
-```
-
-Extra options are passed through, for example `~/so101/follow-me.sh --teleop_time_s=300`.
+Extra options are passed through, for example `~/so101-guide/follow-me.sh --teleop_time_s=300`.
 
 ## Before a live demo
 

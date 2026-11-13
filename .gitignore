@@ -1,2 +1,6 @@
 site/
 *.zip
+.venv/
+env.local.sh
+calibration-backup/
+outputs/

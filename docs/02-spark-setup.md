@@ -44,15 +44,19 @@ Open a new terminal afterwards so that `uv` is on the path, then check:
 uv --version
 ```
 
-## Create the project folder and install LeRobot
+## Get the project folder and install LeRobot
+
+The project folder is this guide's git repository. It contains the settings file and the demo script used in later chapters. Clone it into your home directory and create the Python environment inside it:
 
 ```bash
-mkdir -p ~/so101
-cd ~/so101
+git clone https://github.com/kreuzhofer/so101-guide.git ~/so101-guide
+cd ~/so101-guide
 uv venv --python 3.12
 source .venv/bin/activate
 uv pip install 'lerobot[core_scripts,feetech]==0.7.0'
 ```
+
+The environment lands in `~/so101-guide/.venv/`, which git ignores.
 
 The two extras are all you need for this guide:
 
@@ -64,27 +68,27 @@ The download is several gigabytes because it includes PyTorch with CUDA. The tra
 !!! note "Why a pinned version"
     LeRobot changes quickly and command names have changed between releases. This guide matches 0.7.0. Upgrade deliberately, not by accident.
 
-## Create the settings file
+## The settings file
 
-All later commands use four variables. Create one file that activates the environment and sets them:
+All later commands use four variables. The repository's `env.sh` sets them and activates the Python environment:
 
 ```bash
-cat > ~/so101/env.sh <<'EOF'
-source ~/so101/.venv/bin/activate
 export FOLLOWER_PORT=/dev/so101_follower
 export LEADER_PORT=/dev/so101_leader
 export FOLLOWER_ID=follower_01
 export LEADER_ID=leader_01
-EOF
 ```
 
 From now on, start every terminal session with:
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 ```
 
 The two port names do not exist yet. Chapter 3 creates them. The two IDs are names you choose; LeRobot stores each arm's calibration under its ID, so keep them unchanged.
+
+!!! note "Changing a value on one machine"
+    Do not edit `env.sh` for a local difference. Create `~/so101-guide/env.local.sh` with the `export` lines you want to change. It is loaded last and is not tracked by git.
 
 ## Allow access to serial ports
 
@@ -103,7 +107,7 @@ groups
 ## Verify the installation
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-info
 ```
 
@@ -135,5 +139,5 @@ Each should print a usage text and not an import error.
 - [ ] Driver version noted, 580.65 or newer
 - [ ] `lerobot-info` shows version 0.7.0
 - [ ] CUDA support shows True, or noted as open issue for later
-- [ ] `~/so101/env.sh` exists
+- [ ] Repository cloned to `~/so101-guide`, `source ~/so101-guide/env.sh` runs without a message
 - [ ] `groups` lists `dialout`

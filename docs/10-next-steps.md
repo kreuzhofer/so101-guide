@@ -12,7 +12,7 @@ The follow-me demo is the foundation for everything that involves AI: a policy l
 ## Add the training tools
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 uv pip install 'lerobot[core_scripts,feetech,training]==0.7.0'
 ```
 

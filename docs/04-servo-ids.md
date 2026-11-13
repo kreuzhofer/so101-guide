@@ -33,7 +33,7 @@ The tool works **backwards**: it asks for the gripper servo (ID 6) first and the
 Connect the follower board to USB and power, then run:
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-setup-motors \
     --robot.type=so101_follower \
     --robot.port=$FOLLOWER_PORT

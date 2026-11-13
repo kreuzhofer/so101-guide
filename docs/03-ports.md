@@ -13,7 +13,7 @@ Stick a label on each board: **Leader** and **Follower**. If your follower uses 
 Plug in **both** boards by USB. Power supplies are not needed for this step. Then run:
 
 ```bash
-source ~/so101/env.sh
+source ~/so101-guide/env.sh
 lerobot-find-port
 ```
 
@@ -79,7 +79,7 @@ ls -l /dev/so101_follower /dev/so101_leader
 Only `/dev/so101_leader` should remain. Plug the board back in, swap the two USB sockets, and check once more that both names still exist.
 
 !!! note "If both boards report the same serial number"
-    Some adapter boards share one serial number or have none. In that case use the names under `/dev/serial/by-path/`, which identify the USB socket. Put those paths into `~/so101/env.sh` and always use the same sockets.
+    Some adapter boards share one serial number or have none. In that case use the names under `/dev/serial/by-path/`, which identify the USB socket. Set `FOLLOWER_PORT` and `LEADER_PORT` to those paths in `~/so101-guide/env.local.sh` and always use the same sockets.
 
 ## Checklist
 
