@@ -1,0 +1,44 @@
+site_name: SO-101 Field Guide
+site_description: Build, wire, calibrate and teleoperate an SO-101 leader/follower pair on an NVIDIA DGX Spark.
+docs_dir: docs
+site_dir: site
+use_directory_urls: false
+strict: true
+
+theme:
+  name: null
+  custom_dir: theme
+  static_templates: []
+
+plugins: []
+
+nav:
+  - Overview: index.md
+  - 1. Parts and tools: 01-parts.md
+  - 2. Prepare the Spark: 02-spark-setup.md
+  - 3. Controller boards and ports: 03-ports.md
+  - 4. Servo IDs: 04-servo-ids.md
+  - 5. Assemble the arms: 05-assembly.md
+  - 6. Calibrate: 06-calibration.md
+  - 7. Follow-me demo: 07-follow-me.md
+  - 8. Cameras: 08-cameras.md
+  - 9. Troubleshooting: 09-troubleshooting.md
+  - 10. Next steps: 10-next-steps.md
+  - Command reference: 11-reference.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: false
+      toc_depth: "2-3"
+  - pymdownx.highlight:
+      use_pygments: true
+      guess_lang: false
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist:
+      custom_checkbox: false
+      clickable_checkbox: true

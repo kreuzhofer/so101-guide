@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{% if page and not page.is_homepage %}{{ page.title }} · {% endif %}{{ config.site_name }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="{{ config.site_description }}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="{{ 'assets/guide.css'|url }}">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<div class="shell">
+
+  <aside class="side" aria-label="Chapters">
+    <a class="brand" href="{{ nav.homepage.url|url }}">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="brand-text">{{ config.site_name }}</span>
+    </a>
+    <details class="menu" id="chapter-menu">
+      <summary>Chapters<span class="menu-current">{{ page.title }}</span></summary>
+      <nav>
+        <ol class="chapters">
+        {% for item in nav %}
+          <li{% if item.active %} class="is-active"{% endif %}>
+            <a href="{{ item.url|url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.title }}</a>
+            {% if item.active and page.toc %}
+            <ul class="sections">
+              {% for top in page.toc %}{% for sec in top.children %}
+              <li><a href="{{ sec.url }}">{{ sec.title }}</a></li>
+              {% endfor %}{% endfor %}
+            </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+        </ol>
+      </nav>
+    </details>
+    <p class="side-note">Written for LeRobot 0.7 on a DGX Spark. Commands were checked against the LeRobot source, not on real hardware.</p>
+  </aside>
+
+  <main id="content" class="content">
+    <article class="prose">
+      {{ page.content }}
+    </article>
+    <nav class="pager" aria-label="Previous and next chapter">
+      {% if page.previous_page %}
+      <a class="pager-link prev" href="{{ page.previous_page.url|url }}"><span>Previous</span><strong>{{ page.previous_page.title }}</strong></a>
+      {% else %}<span></span>{% endif %}
+      {% if page.next_page %}
+      <a class="pager-link next" href="{{ page.next_page.url|url }}"><span>Next</span><strong>{{ page.next_page.title }}</strong></a>
+      {% endif %}
+    </nav>
+  </main>
+
+</div>
+<script src="{{ 'assets/guide.js'|url }}"></script>
+</body>
+</html>
