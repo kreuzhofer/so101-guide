@@ -29,13 +29,8 @@ mkdocs serve
 
 The two arm images in `docs/assets/` come from [TheRobotStudio/SO-ARM100](https://github.com/TheRobotStudio/SO-ARM100) (Apache-2.0).
 
-## Continuous build
+## Continuous build and deployment
 
 `.github/workflows/build-site.yml` builds the site on every push and pull request. The compiled site is attached to each workflow run as the `site` artifact. The build runs in strict mode, so a broken link between chapters fails it.
 
-Publishing to GitHub Pages is off by default. To turn it on:
-
-1. In the repository settings, under Pages, set the source to **GitHub Actions**.
-2. Under Secrets and variables → Actions → Variables, add `DEPLOY_PAGES` with the value `true`.
-
-After that, every push to `main` publishes the site. A Pages site is public even when the repository is private.
+Every push to `main` also publishes the site to GitHub Pages. This needs one setting in the repository: under Settings → Pages, the source must be **GitHub Actions**.

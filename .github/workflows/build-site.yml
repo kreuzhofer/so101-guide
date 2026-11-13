@@ -1,4 +1,4 @@
-name: Build site
+name: Build and deploy site
 
 on:
   push:
@@ -38,15 +38,15 @@ jobs:
           retention-days: 14
 
       - name: Upload site for GitHub Pages
-        if: github.ref == 'refs/heads/main' && vars.DEPLOY_PAGES == 'true'
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v5
         with:
           path: site/
 
-  # Publishing is opt-in: it only runs on main when the repository variable
-  # DEPLOY_PAGES is set to "true" and Pages is set to deploy from GitHub Actions.
+  # Every push to main publishes the site. Requires Settings > Pages > Source
+  # to be set to "GitHub Actions".
   deploy:
-    if: github.ref == 'refs/heads/main' && vars.DEPLOY_PAGES == 'true'
+    if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:
